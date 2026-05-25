@@ -14,15 +14,21 @@ if "%~3"=="" (
     echo Invalid Arg: STUB File
 )
 if "%~4"=="" (
-    echo Invalid Arg: STUB File (Web)
+    echo Invalid Arg: STUB File [Web]
 )
 
 if "%ERROR%" == "true" (
+    set /p PHAR=PHAR File: 
+    set /p SRC=SRC Dir: 
+    set /p INDEX=STUB File: 
+    set /p INDEX_WEB=STUB File [Web]: 
+    php make-phar.php "%PHAR%" "%SRC%" "%INDEX%" "%INDEX_WEB%"
     goto END
 )
 
 :MAKE
 php make-phar.php "%1" "%2" "%3" "%4"
+goto END
 
 :END
 pause
